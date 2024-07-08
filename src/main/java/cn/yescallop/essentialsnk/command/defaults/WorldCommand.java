@@ -28,32 +28,31 @@ public class WorldCommand extends CommandBase {
         //KailynDev2024®
     }
 
-    public int execute(CommandSender sender, String commandLabel, Map.Entry<String, ParamList> result, CommandLogger log) {
-        var args = result.getKey();
+    public boolean execute(CommandSender sender, String label, String[] args) {
         if (!this.testPermission(sender)) {
-            return 0;
+            return false;
         }
         if (!this.testIngame(sender)) {
-            return 0;
+            return false;
         }
-        if (args.length() != 1) {
+        if (args.length != 1) {
             this.sendUsage(sender);
-            return 0;
+            return false;
         }
         if (api.hasCooldown(sender)) {
-            return 1;
+            return true;
         }
         if (api.getServer().getLevelByName(args[0])==null) {
             sender.sendMessage(TextFormat.RED + Language.translate("commands.world.notfound", args[0]));
-            return 1;
+            return true;
         } else if (!api.getServer().isLevelLoaded(args[0])) {
             sender.sendMessage(Language.translate("commands.world.loading"));
             if (!api.getServer().loadLevel(args[0])) {
                 sender.sendMessage(TextFormat.RED + Language.translate("commands.world.unloadable"));
-                return 0;
+                return false;
             }
         }
         api.onTP((Player) sender, api.getServer().getLevelByName(args[0]).getSpawnLocation(), Language.translate("commands.generic.teleporting"));
-        return 1;
+        return true;
     }
 }
