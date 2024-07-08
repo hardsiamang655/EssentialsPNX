@@ -1,4 +1,4 @@
-<img alt="banner" height="265" src=".idea/banner.png" width="810"/>
+<img alt="banner" height="265" src=".idea/banner.png" width="770"/>
 
 # EssentialsPNX 
 Essentials plugin is now on PowerNukkitX!
