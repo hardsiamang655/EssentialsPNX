@@ -56,4 +56,4 @@ Commands and Permissions
 
 
 
-__[Download Page](https://nukkitx.com/resources/essentialsnk.15/)__
+__[Download Page](https://github.com/hardsiamang655/EssentialsPNX/releases/tag/EssPNX)__
