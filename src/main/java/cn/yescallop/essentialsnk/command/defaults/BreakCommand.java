@@ -3,6 +3,7 @@ package cn.yescallop.essentialsnk.command.defaults;
 import cn.nukkit.Player;
 import cn.nukkit.block.Block;
 import cn.nukkit.block.BlockAir;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.utils.TextFormat;
 import cn.yescallop.essentialsnk.EssentialsAPI;
@@ -30,7 +31,7 @@ public class BreakCommand extends CommandBase {
             return false;
         }
         Player player = (Player) sender;
-        Block block = player.getTargetBlock(120, new Integer[]{Block.AIR});
+        Block block = player.getTargetBlock(120,new String[]{Block.AIR});
         if (block == null) {
             sender.sendMessage(TextFormat.RED + Language.translate("commands.break.unreachable"));
             return false;

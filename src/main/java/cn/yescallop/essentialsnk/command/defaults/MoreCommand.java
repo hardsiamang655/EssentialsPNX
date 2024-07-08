@@ -3,6 +3,7 @@ package cn.yescallop.essentialsnk.command.defaults;
 import cn.nukkit.Player;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.utils.TextFormat;
 import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.Language;
@@ -34,7 +35,7 @@ public class MoreCommand extends CommandBase {
             return false;
         }
         Item item = player.getInventory().getItemInHand();
-        if (item.getId() == Item.AIR) {
+        if (item.getId() == Item.get(String.valueOf(Item.AIR)).getId()) {
             sender.sendMessage(TextFormat.RED + Language.translate("commands.more.air"));
             return false;
         }

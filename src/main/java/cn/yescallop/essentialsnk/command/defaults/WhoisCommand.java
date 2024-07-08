@@ -32,12 +32,14 @@ public class WhoisCommand extends CommandBase {
 
         this.commandParameters.clear();
         this.commandParameters.put("player", new CommandParameter[]{
-                new CommandParameter("player", CommandParamType.TARGET, false)
+                CommandParameter.newType("player", false, CommandParamType.TARGET)
         });
         this.commandParameters.put("uuid", new CommandParameter[]{
-                new CommandParameter("uuid", CommandParamType.STRING, false)
+                CommandParameter.newType("uuid", false, CommandParamType.STRING)
         });
+        this.enableParamTree();
     }
+
 
     public boolean execute(CommandSender sender, String label, String[] args) {
         if (!this.testPermission(sender) && !this.testIngame(sender)) {

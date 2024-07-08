@@ -9,6 +9,8 @@ import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.Language;
 import cn.yescallop.essentialsnk.command.CommandBase;
 
+import java.util.LinkedList;
+
 /**
  * Created by CreeperFace on 9. 12. 2016.
  */
@@ -20,8 +22,9 @@ public class SpawnCommand extends CommandBase {
         // command parameters
         commandParameters.clear();
         this.commandParameters.put("default", new CommandParameter[] {
-                new CommandParameter("player", CommandParamType.TARGET, true)
+                CommandParameter.newType("player", true, CommandParamType.TARGET)
         });
+        this.enableParamTree();
     }
 
     @Override

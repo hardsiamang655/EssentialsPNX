@@ -9,6 +9,8 @@ import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.Language;
 import cn.yescallop.essentialsnk.command.CommandBase;
 
+import java.util.LinkedList;
+
 public class ReplyCommand extends CommandBase {
 
     public ReplyCommand(EssentialsAPI api) {
@@ -18,8 +20,9 @@ public class ReplyCommand extends CommandBase {
         // command parameters
         this.commandParameters.clear();
         this.commandParameters.put("default", new CommandParameter[]{
-                new CommandParameter("message", CommandParamType.STRING, false)
+                CommandParameter.newType("message", false, CommandParamType.STRING)
         });
+        this.enableParamTree();
     }
 
     @Override

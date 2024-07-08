@@ -20,8 +20,9 @@ public class SetHomeCommand extends CommandBase {
         // command parameters
         commandParameters.clear();
         this.commandParameters.put("default", new CommandParameter[] {
-                new CommandParameter("home", CommandParamType.TEXT, false)
+                CommandParameter.newType("home",false,CommandParamType.TEXT)
         });
+        this.enableParamTree();
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {

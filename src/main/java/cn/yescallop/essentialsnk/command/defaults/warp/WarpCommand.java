@@ -19,12 +19,13 @@ public class WarpCommand extends CommandBase {
         // command parameters
         commandParameters.clear();
         this.commandParameters.put("default", new CommandParameter[] {
-                new CommandParameter("warp", CommandParamType.STRING, true),
+                CommandParameter.newType("warp",true,CommandParamType.TEXT)
         });
         this.commandParameters.put("other", new CommandParameter[] {
-                new CommandParameter("player", CommandParamType.TARGET, false),
-                new CommandParameter("warp", CommandParamType.STRING, false)
+                CommandParameter.newType("player",false,CommandParamType.TARGET),
+                CommandParameter.newType("warp",false,CommandParamType.STRING)
         });
+        this.enableParamTree();
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {

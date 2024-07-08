@@ -11,6 +11,9 @@ import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.Language;
 import cn.yescallop.essentialsnk.command.CommandBase;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class GamemodeCommand extends CommandBase {
 
     public GamemodeCommand(EssentialsAPI api) {
@@ -18,16 +21,16 @@ public class GamemodeCommand extends CommandBase {
         this.setAliases(new String[]{"gm", "gma", "gmc", "gms", "gmsp", "gmt", "adventure", "creative", "survival", "spectator", "viewer"});
 
         // command parameters
-        commandParameters.clear();
+        this.commandParameters.clear();
         this.commandParameters.put("default", new CommandParameter[]{
-                new CommandParameter("mode", CommandParamType.INT, false),
-                new CommandParameter("player", CommandParamType.TARGET, true)
+                CommandParameter.newType("mode", CommandParamType.INT),
+                CommandParameter.newType("player", true, CommandParamType.TARGET)
         });
         this.commandParameters.put("byString", new CommandParameter[]{
-                new CommandParameter("mode", new String[]{"survival", "s", "creative", "c",
-                        "adventure", "a", "spectator", "sp", "viewer", "view", "v"}),
-                new CommandParameter("player", CommandParamType.TARGET, true)
+                CommandParameter.newEnum("mode", new String[]{"survival", "s", "creative", "c","adventure", "a", "spectator", "viewer", "view", "v"}),
+                CommandParameter.newType("player", true, CommandParamType.TARGET)
         });
+        this.enableParamTree();
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {

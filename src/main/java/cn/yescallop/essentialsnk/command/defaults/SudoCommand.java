@@ -11,6 +11,7 @@ import cn.yescallop.essentialsnk.Language;
 import cn.yescallop.essentialsnk.command.CommandBase;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 
 public class SudoCommand extends CommandBase {
 
@@ -20,9 +21,10 @@ public class SudoCommand extends CommandBase {
         // command parameters
         commandParameters.clear();
         this.commandParameters.put("default", new CommandParameter[]{
-                new CommandParameter("player", CommandParamType.TARGET, false),
-                new CommandParameter("command", CommandParamType.COMMAND, false)
+                CommandParameter.newType("player", false, CommandParamType.TARGET),
+                CommandParameter.newType("command", false, CommandParamType.COMMAND)
         });
+        this.enableParamTree();
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {
@@ -44,11 +46,11 @@ public class SudoCommand extends CommandBase {
             PlayerChatEvent event = new PlayerChatEvent(player, msg.substring(2));
             api.getServer().getPluginManager().callEvent(event);
             if (!event.isCancelled()) {
-                api.getServer().broadcastMessage(api.getServer().getLanguage().translateString(event.getFormat(), new String[]{event.getPlayer().getDisplayName(), event.getMessage()}), event.getRecipients());
+                api.getServer().broadcastMessage(api.getServer().getLanguage().tr(event.getFormat(), new String[]{event.getPlayer().getDisplayName(), event.getMessage()}), event.getRecipients());
             }
         } else {
             sender.sendMessage(Language.translate("commands.sudo.command", player.getDisplayName()));
-            api.getServer().dispatchCommand(player, msg);
+            api.getServer().executeCommand(player, msg);
         }
         return true;
     }

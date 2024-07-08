@@ -4,11 +4,15 @@ import cn.nukkit.Player;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.command.data.CommandParamType;
 import cn.nukkit.command.data.CommandParameter;
-import cn.nukkit.potion.Effect;
+import cn.nukkit.entity.effect.Effect;
+import cn.nukkit.entity.effect.EffectSpeed;
+import cn.nukkit.entity.effect.EffectType;
 import cn.nukkit.utils.TextFormat;
 import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.Language;
 import cn.yescallop.essentialsnk.command.CommandBase;
+
+import java.util.LinkedList;
 
 public class SpeedCommand extends CommandBase {
 
@@ -16,11 +20,11 @@ public class SpeedCommand extends CommandBase {
         super("speed", api);
 
         // command parameters
-        commandParameters.clear();
         this.commandParameters.put("default", new CommandParameter[] {
-                new CommandParameter("multiplier", CommandParamType.INT, false),
-                new CommandParameter("player", CommandParamType.TARGET, true)
+                CommandParameter.newType("multiplier", false, CommandParamType.INT),
+                CommandParameter.newType("player", true, CommandParamType.TARGET)
         });
+        this.enableParamTree();
     }
 
     @Override
@@ -55,14 +59,19 @@ public class SpeedCommand extends CommandBase {
             sender.sendMessage(Language.translate("commands.generic.player.notfound", args[0]));
             return false;
         }
-        player.removeEffect(Effect.SPEED);
+
+        player.removeEffect(EffectType.SPEED);
         if (speed != 0) {
-            player.addEffect(
-                    Effect.getEffect(Effect.SPEED)
-                            .setAmplifier(speed)
-                            .setDuration(Integer.MAX_VALUE)
-            );
+               player.getEntity().addEffect(
+                       Effect.get("speed")
+                               .setAmplifier(speed)
+                               .setDuration(Integer.MAX_VALUE)
+                       );
+
+
         }
+
+
         if (sender == player) {
             sender.sendMessage(Language.translate("commands.speed.success", speed));
         } else {

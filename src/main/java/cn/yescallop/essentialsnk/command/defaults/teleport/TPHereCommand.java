@@ -18,8 +18,9 @@ public class TPHereCommand extends CommandBase {
         // command parameters
         commandParameters.clear();
         this.commandParameters.put("default", new CommandParameter[] {
-                new CommandParameter("player", CommandParamType.TARGET, false)
+                CommandParameter.newType("player",false,CommandParamType.TARGET)
         });
+        this.enableParamTree();
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {

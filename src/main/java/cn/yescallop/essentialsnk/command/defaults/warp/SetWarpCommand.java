@@ -18,8 +18,9 @@ public class SetWarpCommand extends CommandBase {
         // command parameters
         commandParameters.clear();
         this.commandParameters.put("default", new CommandParameter[] {
-                new CommandParameter("warp", CommandParamType.TEXT, false)
+                CommandParameter.newType("warp",false,CommandParamType.TEXT)
         });
+        this.enableParamTree();
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {

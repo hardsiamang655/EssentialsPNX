@@ -7,11 +7,13 @@ import cn.nukkit.command.data.CommandParameter;
 import cn.nukkit.utils.TextFormat;
 import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.Language;
+import cn.yescallop.essentialsnk.TPRequest;
 import cn.yescallop.essentialsnk.command.CommandBase;
 import cn.yescallop.essentialsnk.util.duration.LMLDurationParser;
 
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.regex.Pattern;
 
 public class MuteCommand extends CommandBase {
@@ -25,14 +27,15 @@ public class MuteCommand extends CommandBase {
         // command parameters
         commandParameters.clear();
         this.commandParameters.put("default", new CommandParameter[] {
-                new CommandParameter("player", CommandParamType.TARGET, false),
-                new CommandParameter("days", CommandParamType.INT, true),
-                new CommandParameter("hours", CommandParamType.INT, true),
-                new CommandParameter("minutes", CommandParamType.INT, true),
-                new CommandParameter("seconds", CommandParamType.INT, true),
+                CommandParameter.newType("player", false, CommandParamType.TARGET),
+                CommandParameter.newType("days", true, CommandParamType.INT),
+                CommandParameter.newType("hours", true, CommandParamType.INT),
+                CommandParameter.newType("minutes", true, CommandParamType.INT),
+                CommandParameter.newType("seconds", true, CommandParamType.INT),
         });
+        this.enableParamTree();
     }
-
+    
     public boolean execute(CommandSender sender, String label, String[] args) {
         if (!this.testPermission(sender)) {
             return false;

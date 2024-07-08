@@ -10,6 +10,8 @@ import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.Language;
 import cn.yescallop.essentialsnk.command.CommandBase;
 
+import java.util.LinkedList;
+
 public class IgnoreCommand extends CommandBase {
 
     public IgnoreCommand(EssentialsAPI api) {
@@ -18,10 +20,10 @@ public class IgnoreCommand extends CommandBase {
         // command parameters
         commandParameters.clear();
         this.commandParameters.put("default", new CommandParameter[] {
-                new CommandParameter("player", CommandParamType.TARGET, false)
+                CommandParameter.newType("player", false, CommandParamType.TARGET)
         });
+        this.enableParamTree();
     }
-
 
     @Override
     public boolean execute(CommandSender sender, String label, String[] args) {

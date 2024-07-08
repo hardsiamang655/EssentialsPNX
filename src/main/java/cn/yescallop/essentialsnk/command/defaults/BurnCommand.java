@@ -9,6 +9,8 @@ import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.Language;
 import cn.yescallop.essentialsnk.command.CommandBase;
 
+import java.util.LinkedList;
+
 public class BurnCommand extends CommandBase {
 
     public BurnCommand(EssentialsAPI api) {
@@ -17,9 +19,10 @@ public class BurnCommand extends CommandBase {
         // command parameters
         commandParameters.clear();
         this.commandParameters.put("default", new CommandParameter[] {
-                new CommandParameter("target", CommandParamType.TARGET, false),
-                new CommandParameter("time", CommandParamType.INT, false)
+                CommandParameter.newType("target", false, CommandParamType.TARGET),
+                CommandParameter.newType("time", false, CommandParamType.INT)
         });
+        this.enableParamTree();
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {

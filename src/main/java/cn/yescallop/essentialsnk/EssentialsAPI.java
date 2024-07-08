@@ -5,14 +5,19 @@ import cn.nukkit.IPlayer;
 import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
+import cn.nukkit.block.BlockSapling;
 import cn.nukkit.command.CommandSender;
-import cn.nukkit.entity.weather.EntityLightning;
+import cn.nukkit.entity.Entity;
+import cn.nukkit.entity.weather.EntityLightningBolt;
+import cn.nukkit.entity.weather.EntityLightningStrike;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemArmor;
+import cn.nukkit.item.ItemSugarCane;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Location;
 import cn.nukkit.level.Position;
-import cn.nukkit.level.format.FullChunk;
+import cn.nukkit.level.format.IChunk;
 import cn.nukkit.math.Vector3;
 import cn.nukkit.nbt.tag.CompoundTag;
 import cn.nukkit.nbt.tag.DoubleTag;
@@ -38,13 +43,15 @@ import java.util.regex.Pattern;
 
 public class EssentialsAPI {
 
+
+
     private static final long TP_EXPIRATION = TimeUnit.MINUTES.toMillis(1);
     private static final Pattern COOLDOWN_PATTERN = Pattern.compile("^essentialsnk\\.cooldown\\.([0-9]+)$", Pattern.CASE_INSENSITIVE);
     private static final Pattern TP_COOLDOWN_PATTERN = Pattern.compile("^essentialsnk\\.tp\\.cooldown\\.([0-9]+)$", Pattern.CASE_INSENSITIVE);
     private static final Pattern HOMES_PERMISSION_PATTERN = Pattern.compile("^essentialsnk\\.homes\\.([0-9]+)$", Pattern.CASE_INSENSITIVE);
-    public static final Integer[] NON_SOLID_BLOCKS = new Integer[]{Block.AIR, Block.SAPLING, Block.WATER, Block.STILL_WATER, Block.LAVA, Block.STILL_LAVA, Block.COBWEB, Block.TALL_GRASS, Block.BUSH, Block.DANDELION,
-            Block.POPPY, Block.BROWN_MUSHROOM, Block.RED_MUSHROOM, Block.TORCH, Block.FIRE, Block.WHEAT_BLOCK, Block.SIGN_POST, Block.WALL_SIGN, Block.SUGARCANE_BLOCK,
-            Block.PUMPKIN_STEM, Block.MELON_STEM, Block.VINE, Block.CARROT_BLOCK, Block.POTATO_BLOCK, Block.DOUBLE_PLANT};
+    public static final String[] NON_SOLID_BLOCKS = new String[]{Block.AIR, Block.ACACIA_SAPLING,Block.SPRUCE_SAPLING,Block.BAMBOO_SAPLING,Block.BIRCH_SAPLING,Block.CHERRY_SAPLING,Block.DARK_OAK_SAPLING,Block.JUNGLE_SAPLING,Block.OAK_SAPLING, Block.WATER, Block.FLOWING_WATER, Block.LAVA, Block.FLOWING_LAVA, Block.WEB, Block.TALL_GRASS, Block.SWEET_BERRY_BUSH,Block.DEADBUSH, Block.YELLOW_FLOWER,Block.CORNFLOWER,Block.TORCHFLOWER,
+            Block.POPPY, Block.BROWN_MUSHROOM, Block.RED_MUSHROOM, Block.TORCH, Block.FIRE, Block.WHEAT, Block.STANDING_SIGN,Block.OAK_HANGING_SIGN, Block.WALL_SIGN, Item.SUGAR_CANE,
+            Block.PUMPKIN_STEM, Block.MELON_STEM, Block.VINE, Block.CARROTS, Block.POTATOES, Block.SUNFLOWER,Block.ROSE_BUSH,Block.TALL_GRASS,Block.FERN,Block.PEONY};
     private static EssentialsAPI instance = null;
     private static Duration THIRTY_DAYS = Duration.ZERO.plusDays(30);
     private Vector3 temporalVector = new Vector3();
@@ -65,15 +72,13 @@ public class EssentialsAPI {
     public EssentialsAPI(EssentialsNK plugin) {
         instance = this;
         this.plugin = plugin;
-
         this.homeConfig = new ConfigType(new File(plugin.getDataFolder(), "home.yml"), Config.YAML);
         this.warpConfig = new ConfigType(new File(plugin.getDataFolder(), "warp.yml"), Config.YAML);
         this.muteConfig = new ConfigType(new File(plugin.getDataFolder(), "mute.yml"), Config.YAML);
         this.ignoreConfig = new ConfigType(new File(plugin.getDataFolder(), "ignore.yml"), Config.YAML);
         Set<ConfigType> configTypes = ImmutableSet.of(this.homeConfig, this.warpConfig, this.muteConfig, this.ignoreConfig);
         this.configs = new Configs(plugin, configTypes);
-
-        this.plugin.getServer().getScheduler().scheduleDelayedRepeatingTask(this.plugin, new TeleportationExpireTask(),
+        getServer().getScheduler().scheduleDelayedRepeatingTask(this.plugin, new TeleportationExpireTask(),
                 20, 20, true);
     }
 
@@ -242,20 +247,15 @@ public class EssentialsAPI {
     }
 
     public void strikeLighting(Position pos) {
-        FullChunk chunk = pos.getLevel().getChunk((int) pos.getX() >> 4, (int) pos.getZ() >> 4);
+        IChunk chunk = pos.getLevel().getChunk((int) pos.getX() >> 4, (int) pos.getZ() >> 4);
         CompoundTag nbt = new CompoundTag()
-                .putList(new ListTag<DoubleTag>("Pos")
-                        .add(new DoubleTag("", pos.getX()))
-                        .add(new DoubleTag("", pos.getY()))
-                        .add(new DoubleTag("", pos.getZ())))
-                .putList(new ListTag<DoubleTag>("Motion")
-                        .add(new DoubleTag("", 0))
-                        .add(new DoubleTag("", 0))
-                        .add(new DoubleTag("", 0)))
-                .putList(new ListTag<FloatTag>("Rotation")
-                        .add(new FloatTag("", 0))
-                        .add(new FloatTag("", 0)));
-        EntityLightning lightning = new EntityLightning(chunk, nbt);
+                .putList("Pos", new ListTag<DoubleTag>().add(new DoubleTag(pos.x))
+                        .add(new DoubleTag(pos.y)).add(new DoubleTag(pos.z)))
+                .putList("Motion", new ListTag<DoubleTag>().add(new DoubleTag(0))
+                        .add(new DoubleTag(0)).add(new DoubleTag(0)))
+                .putList("Rotation", new ListTag<FloatTag>().add(new FloatTag(0))
+                        .add(new FloatTag(0)));
+       EntityLightningBolt lightning = new EntityLightningBolt(chunk,nbt);
         lightning.spawnToAll();
     }
 

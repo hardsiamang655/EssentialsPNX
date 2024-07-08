@@ -9,6 +9,8 @@ import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.Language;
 import cn.yescallop.essentialsnk.command.CommandBase;
 
+import java.util.LinkedList;
+
 public class VanishCommand extends CommandBase {
 
     public VanishCommand(EssentialsAPI api) {
@@ -18,8 +20,9 @@ public class VanishCommand extends CommandBase {
         // command parameters
         commandParameters.clear();
         this.commandParameters.put("default", new CommandParameter[] {
-                new CommandParameter("player", CommandParamType.TARGET, true)
+                CommandParameter.newType("player", true, CommandParamType.TARGET)
         });
+        this.enableParamTree();
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {

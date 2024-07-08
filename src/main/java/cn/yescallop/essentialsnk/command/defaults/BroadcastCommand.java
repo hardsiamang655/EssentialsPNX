@@ -6,6 +6,8 @@ import cn.nukkit.command.data.CommandParameter;
 import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.command.CommandBase;
 
+import java.util.LinkedList;
+
 public class BroadcastCommand extends CommandBase {
 
     public BroadcastCommand(EssentialsAPI api) {
@@ -15,9 +17,11 @@ public class BroadcastCommand extends CommandBase {
         // command parameters
         commandParameters.clear();
         this.commandParameters.put("default", new CommandParameter[] {
-                new CommandParameter("message", CommandParamType.MESSAGE, true)
+                CommandParameter.newType("message", true, CommandParamType.MESSAGE)
         });
+        this.enableParamTree();
     }
+
 
     public boolean execute(CommandSender sender, String label, String[] args) {
         if (!this.testPermission(sender)) {
