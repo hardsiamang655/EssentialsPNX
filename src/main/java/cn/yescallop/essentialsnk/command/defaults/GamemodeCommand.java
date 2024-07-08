@@ -30,7 +30,7 @@ public class GamemodeCommand extends CommandBase {
                 CommandParameter.newEnum("mode", new String[]{"survival", "s", "creative", "c","adventure", "a", "spectator", "viewer", "view", "v"}),
                 CommandParameter.newType("player", true, CommandParamType.TARGET)
         });
-        this.enableParamTree();
+        //KailynDev2024®
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {

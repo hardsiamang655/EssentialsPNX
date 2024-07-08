@@ -25,7 +25,7 @@ public class WarpCommand extends CommandBase {
                 CommandParameter.newType("player",false,CommandParamType.TARGET),
                 CommandParameter.newType("warp",false,CommandParamType.STRING)
         });
-        this.enableParamTree();
+        //KailynDev2024®
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {

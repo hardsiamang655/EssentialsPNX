@@ -22,7 +22,7 @@ public class IgnoreCommand extends CommandBase {
         this.commandParameters.put("default", new CommandParameter[] {
                 CommandParameter.newType("player", false, CommandParamType.TARGET)
         });
-        this.enableParamTree();
+        //KailynDev2024®
     }
 
     @Override

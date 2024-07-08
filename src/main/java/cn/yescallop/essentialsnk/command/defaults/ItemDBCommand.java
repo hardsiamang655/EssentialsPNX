@@ -22,7 +22,7 @@ public class ItemDBCommand extends CommandBase {
         this.commandParameters.put("default", new CommandParameter[] {
                 CommandParameter.newEnum("target", true, new String[]{"name","id"})
         });
-        this.enableParamTree();
+        //KailynDev2024®
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {

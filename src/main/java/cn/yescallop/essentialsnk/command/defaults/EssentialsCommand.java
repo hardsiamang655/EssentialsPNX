@@ -18,7 +18,7 @@ public class EssentialsCommand extends CommandBase {
         this.commandParameters.put("defaults", new CommandParameter[]{
                 CommandParameter.newEnum("essOption", true, new String[]{"reload"})
         });
-        this.enableParamTree();
+        //KailynDev2024®
     }
 
 

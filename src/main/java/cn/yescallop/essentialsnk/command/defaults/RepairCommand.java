@@ -23,7 +23,7 @@ public class RepairCommand extends CommandBase {
         this.commandParameters.put("default", new CommandParameter[] {
                 CommandParameter.newEnum("player", false, new String[]{"all","hand"})
         });
-        this.enableParamTree();
+        //KailynDev2024®
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {

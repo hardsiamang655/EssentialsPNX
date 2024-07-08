@@ -21,7 +21,7 @@ public class RealNameCommand extends CommandBase {
         this.commandParameters.put("default", new CommandParameter[] {
                 CommandParameter.newType("player", false, CommandParamType.TARGET)
         });
-        this.enableParamTree();
+        //KailynDev2024®
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {

@@ -23,7 +23,7 @@ public class MessageCommand extends CommandBase {
                 CommandParameter.newType("player", false, CommandParamType.TARGET),
                 CommandParameter.newType("message", false, CommandParamType.TEXT)
         });
-        this.enableParamTree();
+        //KailynDev2024®
     }
 
     @Override

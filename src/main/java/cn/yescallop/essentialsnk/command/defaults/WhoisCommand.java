@@ -37,7 +37,7 @@ public class WhoisCommand extends CommandBase {
         this.commandParameters.put("uuid", new CommandParameter[]{
                 CommandParameter.newType("uuid", false, CommandParamType.STRING)
         });
-        this.enableParamTree();
+        //KailynDev2024®
     }
 
 

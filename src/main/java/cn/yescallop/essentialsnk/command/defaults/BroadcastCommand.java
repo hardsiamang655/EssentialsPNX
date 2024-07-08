@@ -19,7 +19,7 @@ public class BroadcastCommand extends CommandBase {
         this.commandParameters.put("default", new CommandParameter[] {
                 CommandParameter.newType("message", true, CommandParamType.MESSAGE)
         });
-        this.enableParamTree();
+        //KailynDev2024®
     }
 
 

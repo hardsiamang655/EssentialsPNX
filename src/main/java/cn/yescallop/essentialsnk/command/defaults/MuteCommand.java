@@ -33,7 +33,7 @@ public class MuteCommand extends CommandBase {
                 CommandParameter.newType("minutes", true, CommandParamType.INT),
                 CommandParameter.newType("seconds", true, CommandParamType.INT),
         });
-        this.enableParamTree();
+        //KailynDev2024®
     }
     
     public boolean execute(CommandSender sender, String label, String[] args) {

@@ -23,7 +23,7 @@ public class FeedCommand extends CommandBase {
         this.commandParameters.put("default", new CommandParameter[] {
                 CommandParameter.newType("player", true, CommandParamType.TARGET)
         });
-        this.enableParamTree();
+        //KailynDev2024®
     }
 
 

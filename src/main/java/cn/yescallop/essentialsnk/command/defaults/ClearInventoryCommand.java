@@ -22,7 +22,7 @@ public class ClearInventoryCommand extends CommandBase {
         this.commandParameters.put("default", new CommandParameter[] {
                 CommandParameter.newType("target", true, CommandParamType.TARGET)
         });
-        this.enableParamTree();
+        //KailynDev2024®
     }
 
 

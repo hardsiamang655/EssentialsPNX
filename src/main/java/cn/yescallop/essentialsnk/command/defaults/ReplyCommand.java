@@ -22,7 +22,7 @@ public class ReplyCommand extends CommandBase {
         this.commandParameters.put("default", new CommandParameter[]{
                 CommandParameter.newType("message", false, CommandParamType.STRING)
         });
-        this.enableParamTree();
+        //KailynDev2024®
     }
 
     @Override

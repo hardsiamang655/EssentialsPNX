@@ -25,7 +25,7 @@ public class WorldCommand extends CommandBase {
         this.commandParameters.put("default", new CommandParameter[] {
                 CommandParameter.newType("world", false, CommandParamType.TEXT)
         });
-        this.enableParamTree();
+        //KailynDev2024®
     }
 
     public int execute(CommandSender sender, String commandLabel, Map.Entry<String, ParamList> result, CommandLogger log) {

@@ -24,7 +24,7 @@ public class SudoCommand extends CommandBase {
                 CommandParameter.newType("player", false, CommandParamType.TARGET),
                 CommandParameter.newType("command", false, CommandParamType.COMMAND)
         });
-        this.enableParamTree();
+        //KailynDev2024®
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {

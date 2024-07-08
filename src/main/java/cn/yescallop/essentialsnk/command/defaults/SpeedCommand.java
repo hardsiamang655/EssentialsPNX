@@ -24,7 +24,7 @@ public class SpeedCommand extends CommandBase {
                 CommandParameter.newType("multiplier", false, CommandParamType.INT),
                 CommandParameter.newType("player", true, CommandParamType.TARGET)
         });
-        this.enableParamTree();
+        //KailynDev2024®
     }
 
     @Override
