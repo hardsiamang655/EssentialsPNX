@@ -3,7 +3,7 @@
 # EssentialsPNX 
 Essentials plugin is now on PowerNukkitX!
 
-[HardSiamang655](https://github.com/hardsiamang655) & [ArdaaArslann](https://github.com/ArdaaArslann)
+By [HardSiamang655](https://github.com/hardsiamang655) & [ArdaaArslann](https://github.com/ArdaaArslann)
 
 Commands and Permissions
 ------------------------------
