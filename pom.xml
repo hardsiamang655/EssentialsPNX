@@ -6,7 +6,7 @@
     <artifactId>EssentialsPNX</artifactId>
     <version>1.9.3</version>
 
-    <name>EssentialsNK</name>
+    <name>EssentialsPNX</name>
     <description>Essential commands for your server</description>
 
     <properties>
