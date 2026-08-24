@@ -1,15 +1,14 @@
 package cn.yescallop.essentialsnk.command.defaults;
 
-import cn.nukkit.Player;
-import cn.nukkit.command.CommandSender;
-import cn.nukkit.command.data.CommandParamType;
-import cn.nukkit.command.data.CommandParameter;
-import cn.nukkit.item.Item;
+import org.powernukkitx.Player;
+import org.powernukkitx.command.CommandSender;
+import org.powernukkitx.command.data.CommandParameter;
+import org.powernukkitx.item.Item;
 import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.Language;
 import cn.yescallop.essentialsnk.command.CommandBase;
+import org.cloudburstmc.protocol.bedrock.data.command.CommandParamType;
 
-import java.util.LinkedList;
 import java.util.StringJoiner;
 
 public class RenameCommand extends CommandBase {
@@ -22,7 +21,7 @@ public class RenameCommand extends CommandBase {
         // command parameters
         commandParameters.clear();
         this.commandParameters.put("default", new CommandParameter[] {
-                CommandParameter.newType("name", false, CommandParamType.STRING)
+                CommandParameter.newType("name", false, CommandParamType.ID)
         });
         //KailynDev2024®
     }
@@ -34,7 +33,7 @@ public class RenameCommand extends CommandBase {
 
         Player player = (Player) sender;
 
-        Item item = player.getInventory().getItemInHand();
+        Item item = player.getInventory().getItemInMainHand();
 
         if (item != null && !item.isNull()){
 

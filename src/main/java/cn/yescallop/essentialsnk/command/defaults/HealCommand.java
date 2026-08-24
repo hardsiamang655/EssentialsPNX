@@ -1,16 +1,14 @@
 package cn.yescallop.essentialsnk.command.defaults;
 
-import cn.nukkit.Player;
-import cn.nukkit.command.CommandSender;
-import cn.nukkit.command.data.CommandParamType;
-import cn.nukkit.command.data.CommandParameter;
-import cn.nukkit.level.particle.HeartParticle;
-import cn.nukkit.utils.TextFormat;
+import org.powernukkitx.Player;
+import org.powernukkitx.command.CommandSender;
+import org.powernukkitx.command.data.CommandParameter;
+import org.powernukkitx.level.particle.HeartParticle;
+import org.powernukkitx.utils.TextFormat;
 import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.Language;
 import cn.yescallop.essentialsnk.command.CommandBase;
-
-import java.util.LinkedList;
+import org.cloudburstmc.protocol.bedrock.data.command.CommandParamType;
 
 public class HealCommand extends CommandBase {
 
@@ -20,7 +18,7 @@ public class HealCommand extends CommandBase {
         // command parameters
         commandParameters.clear();
         this.commandParameters.put("default", new CommandParameter[] {
-                CommandParameter.newType("player", true, CommandParamType.TARGET)
+                CommandParameter.newType("player", true, CommandParamType.WILDCARD_SELECTION)
         });
         //KailynDev2024®
     }
@@ -50,7 +48,7 @@ public class HealCommand extends CommandBase {
                 return false;
             }
         }
-        player.heal(player.getMaxHealth() - player.getHealth());
+        player.heal(player.getHealthMax() - player.getHealthCurrent());
         player.getLevel().addParticle(new HeartParticle(player.add(0, 2), 4));
         player.sendMessage(Language.translate("commands.heal.success"));
         if (sender != player) {

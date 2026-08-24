@@ -1,6 +1,6 @@
 package cn.yescallop.essentialsnk.task;
 
-import cn.nukkit.scheduler.Task;
+import org.powernukkitx.scheduler.Task;
 import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.TPCooldown;
 

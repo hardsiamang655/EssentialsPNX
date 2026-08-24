@@ -1,7 +1,7 @@
 package cn.yescallop.essentialsnk;
 
-import cn.nukkit.Server;
-import cn.nukkit.utils.Utils;
+import org.powernukkitx.Server;
+import org.powernukkitx.utils.Utils;
 
 import java.io.IOException;
 import java.io.InputStream;

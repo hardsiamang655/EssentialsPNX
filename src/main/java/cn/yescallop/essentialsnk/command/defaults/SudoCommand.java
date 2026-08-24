@@ -1,11 +1,11 @@
 package cn.yescallop.essentialsnk.command.defaults;
 
-import cn.nukkit.Player;
-import cn.nukkit.command.CommandSender;
-import cn.nukkit.command.data.CommandParamType;
-import cn.nukkit.command.data.CommandParameter;
-import cn.nukkit.event.player.PlayerChatEvent;
-import cn.nukkit.utils.TextFormat;
+import org.powernukkitx.Player;
+import org.powernukkitx.command.CommandSender;
+import org.cloudburstmc.protocol.bedrock.data.command.CommandParamType;
+import org.powernukkitx.command.data.CommandParameter;
+import org.powernukkitx.event.player.PlayerChatEvent;
+import org.powernukkitx.utils.TextFormat;
 import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.Language;
 import cn.yescallop.essentialsnk.command.CommandBase;
@@ -21,7 +21,7 @@ public class SudoCommand extends CommandBase {
         // command parameters
         commandParameters.clear();
         this.commandParameters.put("default", new CommandParameter[]{
-                CommandParameter.newType("player", false, CommandParamType.TARGET),
+                CommandParameter.newType("player", false, CommandParamType.WILDCARD_SELECTION),
                 CommandParameter.newType("command", false, CommandParamType.COMMAND)
         });
         //KailynDev2024®

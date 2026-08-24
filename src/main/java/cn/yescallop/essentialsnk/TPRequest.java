@@ -1,7 +1,7 @@
 package cn.yescallop.essentialsnk;
 
-import cn.nukkit.Player;
-import cn.nukkit.level.Location;
+import org.powernukkitx.Player;
+import org.powernukkitx.level.Location;
 
 public class TPRequest implements Comparable<TPRequest> {
 

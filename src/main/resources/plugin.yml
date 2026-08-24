@@ -1,6 +1,6 @@
 name: ${project.name}
 version: ${project.version}
-api: 2.0.0
+api: 3.0.0
 author: Scallop & KailynDevelopment
 description: ${project.description}
 main: cn.yescallop.essentialsnk.EssentialsNK

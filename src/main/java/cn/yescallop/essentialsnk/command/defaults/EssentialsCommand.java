@@ -1,14 +1,10 @@
 package cn.yescallop.essentialsnk.command.defaults;
 
-import cn.nukkit.command.CommandSender;
-import cn.nukkit.command.data.CommandParamType;
-import cn.nukkit.command.data.CommandParameter;
+import org.powernukkitx.command.CommandSender;
+import org.powernukkitx.command.data.CommandParameter;
 import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.Language;
 import cn.yescallop.essentialsnk.command.CommandBase;
-
-import java.util.Arrays;
-import java.util.LinkedList;
 
 public class EssentialsCommand extends CommandBase {
     public EssentialsCommand(EssentialsAPI api) {

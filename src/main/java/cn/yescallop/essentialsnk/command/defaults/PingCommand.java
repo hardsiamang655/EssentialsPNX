@@ -1,6 +1,6 @@
 package cn.yescallop.essentialsnk.command.defaults;
 
-import cn.nukkit.command.CommandSender;
+import org.powernukkitx.command.CommandSender;
 import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.command.CommandBase;
 

@@ -1,12 +1,12 @@
 package cn.yescallop.essentialsnk.command.defaults;
 
-import cn.nukkit.IPlayer;
-import cn.nukkit.Player;
-import cn.nukkit.Server;
-import cn.nukkit.command.CommandSender;
-import cn.nukkit.command.data.CommandParamType;
-import cn.nukkit.command.data.CommandParameter;
-import cn.nukkit.utils.LoginChainData;
+import org.powernukkitx.IPlayer;
+import org.powernukkitx.Player;
+import org.powernukkitx.Server;
+import org.powernukkitx.command.CommandSender;
+import org.powernukkitx.network.process.auth.ClientChainData;
+import org.cloudburstmc.protocol.bedrock.data.command.CommandParamType;
+import org.powernukkitx.command.data.CommandParameter;
 import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.Language;
 import cn.yescallop.essentialsnk.command.CommandBase;
@@ -28,14 +28,13 @@ public class WhoisCommand extends CommandBase {
         super("whois", api);
         this.setAliases(new String[]{"whoiss"});
         this.setUsage("/whois <name|uuid>");
-        this.setPermission("essentialsnk.whois");
 
         this.commandParameters.clear();
         this.commandParameters.put("player", new CommandParameter[]{
-                CommandParameter.newType("player", false, CommandParamType.TARGET)
+                CommandParameter.newType("player", false, CommandParamType.WILDCARD_SELECTION)
         });
         this.commandParameters.put("uuid", new CommandParameter[]{
-                CommandParameter.newType("uuid", false, CommandParamType.STRING)
+                CommandParameter.newType("uuid", false, CommandParamType.ID)
         });
         //KailynDev2024®
     }
@@ -93,8 +92,9 @@ public class WhoisCommand extends CommandBase {
         }
 
         if (onlinePlayer != null) {
-            LoginChainData loginChainData = onlinePlayer.getLoginChainData();
-            String xuid = loginChainData.isXboxAuthed() ? loginChainData.getXUID() : "N/A (Offline)";
+            Player.PlayerInfo info = onlinePlayer.getPlayerInfo();
+            ClientChainData loginChainData = info.getClientChainData();
+            String xuid = info.isXboxAuth() ? onlinePlayer.getXUID() : "N/A (Offline)";
             message.add(Language.translate("commands.whois.xuid", xuid));
 
             InetSocketAddress socketAddress = new InetSocketAddress(onlinePlayer.getAddress(), onlinePlayer.getPort());
@@ -107,7 +107,7 @@ public class WhoisCommand extends CommandBase {
             message.add(Language.translate("commands.whois.ip.address", address));
             message.add(Language.translate("commands.whois.ip.reverse", hostname));
 
-            DeviceOS deviceOS = DeviceOS.values()[loginChainData.getDeviceOS()];
+            DeviceOS deviceOS = DeviceOS.values()[loginChainData.getDeviceOS().getId()];
             message.add(Language.translate("commands.whois.device.os", deviceOS.name));
 
             String deviceModel = loginChainData.getDeviceModel();
@@ -122,7 +122,7 @@ public class WhoisCommand extends CommandBase {
 
             message.add(Language.translate("commands.whois.gamemode", Server.getGamemodeString(onlinePlayer.getGamemode())));
 
-            message.add(Language.translate("commands.whois.health", onlinePlayer.getHealth() + "/" + onlinePlayer.getMaxHealth()));
+            message.add(Language.translate("commands.whois.health", onlinePlayer.getHealthCurrent() + "/" + onlinePlayer.getHealthMax()));
 
             message.add(Language.translate("commands.whois.exp", onlinePlayer.getExperience()));
         }

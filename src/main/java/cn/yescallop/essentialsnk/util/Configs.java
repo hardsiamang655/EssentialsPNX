@@ -1,9 +1,9 @@
 package cn.yescallop.essentialsnk.util;
 
-import cn.nukkit.plugin.Plugin;
-import cn.nukkit.scheduler.TaskHandler;
-import cn.nukkit.utils.Config;
-import cn.nukkit.utils.ConfigSection;
+import org.powernukkitx.plugin.Plugin;
+import org.powernukkitx.scheduler.TaskHandler;
+import org.powernukkitx.utils.Config;
+import org.powernukkitx.utils.ConfigSection;
 import com.google.common.base.Preconditions;
 
 import java.io.Closeable;

@@ -1,15 +1,12 @@
 package cn.yescallop.essentialsnk.command.defaults;
 
-import cn.nukkit.Player;
-import cn.nukkit.command.CommandSender;
-import cn.nukkit.command.data.CommandParamType;
-import cn.nukkit.command.data.CommandParameter;
-import cn.nukkit.item.Item;
+import org.powernukkitx.Player;
+import org.powernukkitx.command.CommandSender;
+import org.powernukkitx.command.data.CommandParameter;
+import org.powernukkitx.item.Item;
 import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.Language;
 import cn.yescallop.essentialsnk.command.CommandBase;
-
-import java.util.LinkedList;
 
 public class ItemDBCommand extends CommandBase {
 
@@ -36,7 +33,7 @@ public class ItemDBCommand extends CommandBase {
             this.sendUsage(sender);
             return false;
         }
-        Item item = ((Player) sender).getInventory().getItemInHand();
+        Item item = ((Player) sender).getInventory().getItemInMainHand();
         String message = api.isRepairable(item) ? Language.translate("commands.itemdb.damage", String.valueOf(item.getDamage())) : Language.translate("commands.itemdb.meta", String.valueOf(item.getDamage()));
         if (args.length == 1) {
             switch (args[0]) {

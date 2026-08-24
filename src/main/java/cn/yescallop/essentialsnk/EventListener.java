@@ -1,12 +1,12 @@
 package cn.yescallop.essentialsnk;
 
-import cn.nukkit.Player;
-import cn.nukkit.block.Block;
-import cn.nukkit.command.CommandSender;
-import cn.nukkit.event.EventHandler;
-import cn.nukkit.event.Listener;
-import cn.nukkit.event.player.*;
-import cn.nukkit.level.Location;
+import org.powernukkitx.Player;
+import org.powernukkitx.block.Block;
+import org.powernukkitx.command.CommandSender;
+import org.powernukkitx.event.EventHandler;
+import org.powernukkitx.event.Listener;
+import org.powernukkitx.event.player.*;
+import org.powernukkitx.level.Location;
 
 import java.util.Iterator;
 

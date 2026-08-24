@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.yescallop.essentialsnk</groupId>
     <artifactId>EssentialsPNX</artifactId>
-    <version>1.9.3</version>
+    <version>1.9.7</version>
 
     <name>EssentialsPNX</name>
     <description>Essential commands for your server</description>
@@ -17,16 +17,36 @@
 
     <repositories>
         <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2/</url>
+        </repository>
+        <repository>
             <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
+            <url>https://www.jitpack.io</url>
+        </repository>
+        <repository>
+            <id>opencollab-repository-maven-releases</id>
+            <name>Opencollab Repository releases</name>
+            <url>https://repo.opencollab.dev/maven-releases</url>
+        </repository>
+        <repository>
+            <id>opencollab-repository-maven-snapshots</id>
+            <name>Opencollab Repository snapshots</name>
+            <url>https://repo.opencollab.dev/maven-snapshots</url>
+        </repository>
+        <repository>
+            <id>PowerNukkitX-releases</id>
+            <name>PowerNukkitX Repository</name>
+            <url>https://repo.powernukkitx.org/releases</url>
         </repository>
     </repositories>
 
     <dependencies>
         <dependency>
-            <groupId>com.github.PowerNukkitX</groupId>
-            <artifactId>PowerNukkitX</artifactId>
-            <version>snapshot</version>
+            <groupId>org.powernukkitx</groupId>
+            <artifactId>server</artifactId>
+            <version>nightly-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -49,8 +69,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>9</source>
-                    <target>9</target>
+                    <source>21</source>
+                    <target>21</target>
                 </configuration>
             </plugin>
         </plugins>

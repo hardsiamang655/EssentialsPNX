@@ -1,6 +1,6 @@
 package cn.yescallop.essentialsnk;
 
-import cn.nukkit.plugin.PluginBase;
+import org.powernukkitx.plugin.PluginBase;
 import cn.yescallop.essentialsnk.command.CommandManager;
 import cn.yescallop.essentialsnk.task.TeleportationTask;
 

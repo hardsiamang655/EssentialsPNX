@@ -1,6 +1,6 @@
 package cn.yescallop.essentialsnk.command;
 
-import cn.nukkit.command.CommandMap;
+import org.powernukkitx.command.CommandMap;
 import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.command.defaults.*;
 import cn.yescallop.essentialsnk.command.defaults.home.DelHomeCommand;

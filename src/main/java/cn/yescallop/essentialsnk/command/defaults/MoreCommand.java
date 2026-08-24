@@ -1,10 +1,9 @@
 package cn.yescallop.essentialsnk.command.defaults;
 
-import cn.nukkit.Player;
-import cn.nukkit.command.CommandSender;
-import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemID;
-import cn.nukkit.utils.TextFormat;
+import org.powernukkitx.Player;
+import org.powernukkitx.command.CommandSender;
+import org.powernukkitx.item.Item;
+import org.powernukkitx.utils.TextFormat;
 import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.Language;
 import cn.yescallop.essentialsnk.command.CommandBase;
@@ -34,7 +33,7 @@ public class MoreCommand extends CommandBase {
             sender.sendMessage(TextFormat.RED + Language.translate("commands.more.notavalible"));
             return false;
         }
-        Item item = player.getInventory().getItemInHand();
+        Item item = player.getInventory().getItemInMainHand();
         if (item.getId() == Item.get(String.valueOf(Item.AIR)).getId()) {
             sender.sendMessage(TextFormat.RED + Language.translate("commands.more.air"));
             return false;
